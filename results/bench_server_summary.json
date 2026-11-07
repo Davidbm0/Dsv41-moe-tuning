@@ -1,0 +1,17 @@
+{
+ "I_slots8": {
+  "gen": 8.68,
+  "prompt": 16.05,
+  "sample": " 2.. 3. Figure 1. What is the difference of 2? (10)"
+ },
+ "J_dual16": {
+  "gen": 6.41,
+  "prompt": 12.91,
+  "sample": " (Hint: 2.1) What is the name of the ...? (a) What is the ... (b) 2.2.1 in the last ... (b) 2.2.1 (b) 2.2 in the last ... (c) 2.1 ... (d) 2.2 ... (e) 2.2 ...) 1"
+ },
+ "K_profile8": {
+  "gen": 3.04,
+  "prompt": 6.75,
+  "sample": " (The figure 2\n\n#  The length of the 3D, for the fields in the 3D, and the fields are not the only thing they are, but the question is the same. I can't be. 2.5"
+ }
+}

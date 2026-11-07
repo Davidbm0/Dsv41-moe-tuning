@@ -1,0 +1,317 @@
+{
+ "A_baseline": {
+  "gen_tps": 2.24,
+  "prefill_tps": 0.0,
+  "cache": "",
+  "offload": "",
+  "sample": ". \n\n\n\nThe question is about a Python3. But it's not the problem. The only function that is not the one in the\n\n 1) for the input to be in the<------------------"
+ },
+ "B_dyn16": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.59.388.782 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.59.391.119 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.59.391.125 D set_adapters_lora: adapters = 0000000000000000",
+   "0.59.391.125 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.59.391.126 D set_embeddings: value = 0",
+   "0.59.391.126 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.59.391.127 D que  yield_to_que: yielding to queue",
+   "0.59.391.135 D que  process_new_: processing task, id = 11",
+   "0.59.391.136 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.59.391.137 D que  process_new_: task declined, id = 11",
+   "0.59.529.361 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.59.529.364 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "C_dyn16_mask2": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.49.839.673 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.49.840.485 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.49.840.491 D set_adapters_lora: adapters = 0000000000000000",
+   "0.49.840.492 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.49.840.492 D set_embeddings: value = 0",
+   "0.49.840.493 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.49.840.493 D que  yield_to_que: yielding to queue",
+   "0.49.840.502 D que  process_new_: processing task, id = 11",
+   "0.49.840.503 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.49.840.503 D que  process_new_: task declined, id = 11",
+   "0.49.981.455 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.49.981.458 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "D_dyn_auto": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.59.820.821 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.59.823.143 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.59.823.149 D set_adapters_lora: adapters = 0000000000000000",
+   "0.59.823.149 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.59.823.150 D set_embeddings: value = 0",
+   "0.59.823.151 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.59.823.151 D que  yield_to_que: yielding to queue",
+   "0.59.823.160 D que  process_new_: processing task, id = 11",
+   "0.59.823.161 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.59.823.161 D que  process_new_: task declined, id = 11",
+   "1.00.003.448 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "1.00.003.452 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "E_profile16": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.58.688.639 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.58.690.610 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.58.690.618 D set_adapters_lora: adapters = 0000000000000000",
+   "0.58.690.618 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.58.690.618 D set_embeddings: value = 0",
+   "0.58.690.619 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.58.690.620 D que  yield_to_que: yielding to queue",
+   "0.58.690.628 D que  process_new_: processing task, id = 11",
+   "0.58.690.629 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.58.690.630 D que  process_new_: task declined, id = 11",
+   "0.58.870.813 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.58.870.816 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "F_profile16_nodyn": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.59.084.565 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.59.086.858 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.59.086.865 D set_adapters_lora: adapters = 0000000000000000",
+   "0.59.086.865 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.59.086.866 D set_embeddings: value = 0",
+   "0.59.086.866 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.59.086.867 D que  yield_to_que: yielding to queue",
+   "0.59.086.876 D que  process_new_: processing task, id = 11",
+   "0.59.086.877 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.59.086.877 D que  process_new_: task declined, id = 11",
+   "0.59.219.626 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.59.219.629 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "G_profile24": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM",
+  "last_log": [
+   "0.40.350.296 I resolve_fused_ops: fused DeepSeek V4 HC post enabled",
+   "0.40.350.303 D graph_reserve: reserving a graph for ubatch with n_tokens =  128, n_seqs =  1, n_outputs =    1",
+   "0.40.574.867 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1653.75 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.40.608.942 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1709.31 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.40.608.946 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1792345728",
+   "0.40.608.947 E graph_reserve: failed to allocate compute buffers",
+   "0.40.612.397 E llama_init_from_model: failed to initialize the context: failed to allocate compute pp buffers",
+   "0.40.612.403 E cmn  common_init_: failed to create context with model 'MODELS/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf'",
+   "0.40.612.404 E cmn  common_init_: failed to create context with model 'MODELS/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf'",
+   "0.40.612.406 E srv    load_model: failed to create_context with model 'MODELS/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf'",
+   "0.40.612.563 I srv   operator (): operator (): cleaning up before exit...",
+   "0.40.613.387 E srv  llama_server: exiting due to model loading error"
+  ]
+ },
+ "H_profile16_borrow": {
+  "gen_tps": 2.65,
+  "prefill_tps": 4.28,
+  "cache": "expert cache: 40 layers x 12 slots, 4442.34 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "The user's asking me need to address a couple of things: (1) solve a problem with the microstrip trace, and (2) (1) is a bit too high (or lower than) the number"
+ },
+ "I_dyn16_nothink": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.48.942.129 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 1, pos_max = 1",
+   "0.48.943.996 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 1, pos_max = 1, n_tokens = 2, size = 0.106 MiB)",
+   "0.48.944.002 D set_adapters_lora: adapters = 0000000000000000",
+   "0.48.944.003 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.48.944.003 D set_embeddings: value = 0",
+   "0.48.944.004 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.48.944.004 D que  yield_to_que: yielding to queue",
+   "0.48.944.014 D que  process_new_: processing task, id = 11",
+   "0.48.944.015 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.48.944.016 D que  process_new_: task declined, id = 11",
+   "0.49.085.715 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.49.085.718 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "J_profile16_decay7": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.58.640.467 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.58.642.861 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.58.642.869 D set_adapters_lora: adapters = 0000000000000000",
+   "0.58.642.870 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.58.642.870 D set_embeddings: value = 0",
+   "0.58.642.871 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.58.642.871 D que  yield_to_que: yielding to queue",
+   "0.58.642.880 D que  process_new_: processing task, id = 11",
+   "0.58.642.882 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.58.642.882 D que  process_new_: task declined, id = 11",
+   "0.58.791.213 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.58.791.216 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "K_dyn_slotsauto": {
+  "gen_tps": 2.74,
+  "prefill_tps": 0.0,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "The user\u2019s doc is a bit of a problem. In the context of the problem, let's use the following: the user has to be direct, but let's get the answer and the answer"
+ },
+ "L_dyn16_borrow256": {
+  "gen_tps": 2.74,
+  "prefill_tps": 2.13,
+  "cache": "expert cache: 40 layers x 16 slots, 5923.12 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "The user is a fairly technical, and this is a very good question about a common problem. Ied. 10,000-20000 words.\n\n"
+ },
+ "M_dyn16_kvq8": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.59.706.861 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.59.708.894 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 0.610 MiB)",
+   "0.59.708.900 D set_adapters_lora: adapters = 0000000000000000",
+   "0.59.708.901 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.59.708.901 D set_embeddings: value = 0",
+   "0.59.708.902 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.59.708.902 D que  yield_to_que: yielding to queue",
+   "0.59.708.913 D que  process_new_: processing task, id = 11",
+   "0.59.708.914 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.59.708.914 D que  process_new_: task declined, id = 11",
+   "0.59.852.291 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1669.13 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.59.852.294 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1750210432"
+  ]
+ },
+ "N_ncmoe0_auto": {
+  "gen_tps": 2.33,
+  "prefill_tps": 0.0,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "I'm\n00F,1:10:5,0: public, data."
+ },
+ "O_ngram_cache": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.59.084.355 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.59.086.670 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.59.086.676 D set_adapters_lora: adapters = 0000000000000000",
+   "0.59.086.676 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.59.086.677 D set_embeddings: value = 0",
+   "0.59.086.678 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.59.086.678 D que  yield_to_que: yielding to queue",
+   "0.59.086.687 D que  process_new_: processing task, id = 11",
+   "0.59.086.688 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.59.086.688 D que  process_new_: task declined, id = 11",
+   "0.59.159.909 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.59.159.912 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "P_ngram_map_k4v": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.58.060.960 D slot  operator (): id  0 | task 7 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.58.063.372 I slot create_check: id  0 | task 7 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.58.063.379 D set_adapters_lora: adapters = 0000000000000000",
+   "0.58.063.380 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.58.063.381 D set_embeddings: value = 0",
+   "0.58.063.381 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.58.063.382 D que  yield_to_que: yielding to queue",
+   "0.58.063.392 D que  process_new_: processing task, id = 8",
+   "0.58.063.393 D srv  process_sing: decoding, decline task, id_task = 8",
+   "0.58.063.394 D que  process_new_: task declined, id = 8",
+   "0.58.166.848 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.58.166.851 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "Q_ncmoe24": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.59.419.709 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.59.420.462 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.59.420.468 D set_adapters_lora: adapters = 0000000000000000",
+   "0.59.420.468 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.59.420.469 D set_embeddings: value = 0",
+   "0.59.420.469 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.59.420.470 D que  yield_to_que: yielding to queue",
+   "0.59.420.481 D que  process_new_: processing task, id = 11",
+   "0.59.420.481 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.59.420.482 D que  process_new_: task declined, id = 11",
+   "0.59.524.371 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.59.524.374 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "R_dyn16_poll": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.59.370.252 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.59.371.026 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.59.371.030 D set_adapters_lora: adapters = 0000000000000000",
+   "0.59.371.030 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.59.371.031 D set_embeddings: value = 0",
+   "0.59.371.031 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.59.371.032 D que  yield_to_que: yielding to queue",
+   "0.59.373.674 D que  process_new_: processing task, id = 11",
+   "0.59.373.676 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.59.373.676 D que  process_new_: task declined, id = 11",
+   "0.59.511.886 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.59.511.906 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "S_dyn16_budget1536": {
+  "gen_tps": null,
+  "prefill_tps": null,
+  "fail": "OOM in generare",
+  "last_log": [
+   "0.59.131.152 D slot  operator (): id  0 | task 10 | main/do_checkpoint = yes, pos_min = 27, pos_max = 27",
+   "0.59.133.617 I slot create_check: id  0 | task 10 | created context checkpoint 2 of 32 (pos_min = 27, pos_max = 27, n_tokens = 28, size = 1.123 MiB)",
+   "0.59.133.623 D set_adapters_lora: adapters = 0000000000000000",
+   "0.59.133.624 D adapters_lora_are_same: adapters = 0000000000000000",
+   "0.59.133.624 D set_embeddings: value = 0",
+   "0.59.133.625 D srv        decode: n_batch (effective) = 512, off = 0",
+   "0.59.133.625 D que  yield_to_que: yielding to queue",
+   "0.59.133.636 D que  process_new_: processing task, id = 11",
+   "0.59.133.636 D srv  process_sing: decoding, decline task, id_task = 11",
+   "0.59.133.637 D que  process_new_: task declined, id = 11",
+   "0.59.245.193 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 1668.18 MiB on device 0: cudaMalloc failed: out of memory",
+   "0.59.245.196 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 1749213056"
+  ]
+ },
+ "T_dual16": {
+  "gen_tps": 2.09,
+  "prefill_tps": 0.0,
+  "cache": "",
+  "offload": "",
+  "sample": "## Let me\n\n##\n\nThe user is a\n, but I should be to my pre-lab 3. The the\n\n**Answer to the wrong question, but the answer is a lot of the same. I need to solve th"
+ },
+ "U_dual16_ts3414": {
+  "gen_tps": 2.18,
+  "prefill_tps": 0.0,
+  "cache": "",
+  "offload": "",
+  "sample": "I'm a deep, small, or...(whaot) is a test of the<thes\n, I don't need the one, just to be the first to do the next thing. But I will not be a good one, I'll cont"
+ }
+}

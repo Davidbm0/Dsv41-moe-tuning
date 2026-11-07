@@ -1,0 +1,40 @@
+diff --git a/common/jinja/value.cpp b/common/jinja/value.cpp
+index 6999ef7..16a7a59 100644
+--- a/common/jinja/value.cpp
++++ b/common/jinja/value.cpp
+@@ -367,6 +367,23 @@ const func_builtins & global_builtins() {
+             }
+             return out;
+         }},
++        {"dict", [](const func_args & args) -> value {
++            // dict(obj, key=value, ...) -> copy of obj with extra/overwritten keys
++            auto out = mk_val<value_object>();
++            for (const auto & arg : args.get_args()) {
++                if (is_val<value_kwarg>(arg)) {
++                    auto kwarg = cast_val<value_kwarg>(arg);
++                    out->insert(kwarg->key, kwarg->val);
++                } else if (is_val<value_object>(arg)) {
++                    for (const auto & pair : arg->as_ordered_object()) {
++                        out->insert(pair.first, pair.second);
++                    }
++                } else {
++                    throw raised_exception("dict: positional arguments must be objects");
++                }
++            }
++            return out;
++        }},
+         {"strftime_now", [](const func_args & args) -> value {
+             args.ensure_vals<value_string>();
+             std::string format = args.get_pos(0)->as_string().str();
+diff --git a/src/llama-context.cpp b/src/llama-context.cpp
+index c61692b..816b04c 100644
+--- a/src/llama-context.cpp
++++ b/src/llama-context.cpp
+@@ -1,5 +1,7 @@
+ #include "llama-context.h"
+ 
++#include <algorithm>
++
+ #include "ggml.h"
+ #include "llama-arch.h"
+ #include "llama-graph.h"
