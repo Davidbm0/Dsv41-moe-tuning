@@ -76,6 +76,18 @@ cache-hit-rate problem**, not a FLOPS problem. These benches measure which knobs
 - Open confound: does lazy-mode *itself* degrade the output, or does degenerate output
   simply enable the speed? bench9 separates the two.
 
+### bench9 (queued)
+
+`scripts/llama_server_bench9.py` + `RUN-BENCH9.bat` — all configs mask 1 + 8 slots, decode 512 tok,
+`finish_reason` recorded:
+- `P` = bench8 O recipe (lazy on) but **server-side reasoning OFF** → does 18–25 t/s survive on
+  genuinely coherent output?
+- `Q` = mask 1 alone, lazy **auto**, reasoning ON → separates the mask lever from the lazy lever.
+- `R` = lazy on + `--reasoning-budget 256` → thinking forced to close, then answer.
+
+Reading: P ~20 with finish=stop → lazy-mode is a real speed knob; P ~8–10 with finish=stop →
+bench8's speed was an artifact of degeneracy.
+
 ### What bench6 proved (old build vs readahead build, same model/GPU)
 
 - Prefill: **0.53 → 41 t/s (77x)**. The fix is `-b 4096 -ub 1024` + `GGML_SCHED_READAHEAD=16`
