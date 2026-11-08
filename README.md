@@ -17,7 +17,7 @@ cache-hit-rate problem**, not a FLOPS problem. These benches measure which knobs
 | Knob | Effect | Evidence |
 |---|---|---|
 | `--moe-cache-mask 2` | **3x decode** (2.7 → 7.8 t/s): router restricted to cached experts except top-2 | bench4 vs bench5, same slots |
-| `--moe-cache-mask 2` + prefill | **8x slower prefill** (4.3 → 0.5 t/s): cache thrashes on batches > 32 tokens | bench5 logs |
+| `--moe-cache-mask 2` + prefill | **8x slower prefill** (4.3 → 0.5 t/s) on the old build; fixed by `-b` > `-ub` + `--layer-major` + `GGML_SCHED_READAHEAD` on the readahead build (41 t/s) | bench5 vs bench6 |
 | `--moe-cache-slots` | more cached experts/layer = higher hit rate; 16 slots without borrow OOMs CUDA0 | bench4 (7 pass / 14 fail) |
 | `--moe-cache-margin` | reserves VRAM for the prefill graph; 512 vs 2048 changes both hit rate and OOM | bench1 vs bench5 |
 | `GGML_SCHED_PREFETCH_EXPERTS` | overlaps expert uploads with compute (env var) | bench5 setup |
@@ -33,6 +33,22 @@ cache-hit-rate problem**, not a FLOPS problem. These benches measure which knobs
 | bench5 `B_mask2_slots12` | mask2, 12 slots, margin 2048 | 7.83 | 0.53 |
 | bench4 `K/L` (no mask) | 8–16 slots, no mask | 2.74 | 2.1 |
 | bench4 `A_baseline` | no cache | 2.24 | — |
+| **bench6 `F` (readahead build)** | mask2, 8 slots, `-b 4096 -ub 1024`, `--layer-major 1` | **8.3** | **41.0** |
+| bench6 `E` (readahead, `-b 256`) | control, same as bench5 A | 7.3 | 3.4 |
+| bench6 `G` (`--layer-major 3`) | 4 ubatches — nothing to group | 6.8 | 38.8 |
+
+### What bench6 proved (old build vs readahead build, same model/GPU)
+
+- Prefill: **0.53 → 41 t/s (77x)**. The fix is `-b 4096 -ub 1024` + `GGML_SCHED_READAHEAD=16`
+  + `--layer-major 1`: fewer ubatches means fewer full passes over the expert weights,
+  and the readahead threads overlap SSD reads with compute.
+- `--layer-major 3` does **not** help at only 4 ubatches per prompt (it needs many
+  ubatches per batch, as in the fork README's `-b 32768` test).
+- Decode is unchanged by the new build (~7–9 t/s) — matching the fork README
+  ("decode speed did not change"). The decode plateau is the synchronous expert swap.
+- A seeded `--moe-cache-profile` helped on the old build (+20%) but is redundant once
+  readahead is on.
+- Best individual runs: 9.1 t/s decode (F run3, H run3).
 
 Bandwidth math: without mask the router pulls ~2.2 GB of expert weights per token;
 with mask2 it is ~0.7 GB/token. At 7.8 t/s that is ~5.8 GB/s — far below the DDR5-5600

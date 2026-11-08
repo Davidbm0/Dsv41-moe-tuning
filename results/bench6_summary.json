@@ -1,0 +1,30 @@
+{
+ "E_new_b256_slots8": {
+  "gen_tps": 7.32,
+  "prefill_tps": 3.41,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "## \n\nI'm expected to use.1"
+ },
+ "F_new_lm_b4096": {
+  "gen_tps": 8.32,
+  "prefill_tps": 40.96,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "question\nI need source code and play 3d in the form of a function. The user has a target 50 Ohm impedance. The user needs to use the \"solve_microstrip_width\" an"
+ },
+ "G_new_lm3_b4096": {
+  "gen_tps": 6.8,
+  "prefill_tps": 38.75,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "as a Python code  0. and the output of the answer needs to be:\n\n##\n\n##  possible and not to be able to.\n\nThe function is: ```a\n\nI\nyou should just, my\nA) What is"
+ },
+ "H_new_lm_b4096_prof": {
+  "gen_tps": 7.61,
+  "prefill_tps": 41.19,
+  "cache": "expert cache: 40 layers x 12 slots, 4442.34 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "We need to find for the given problem: \"Solve the micros...\" (not the 50-ohm, but the microstrip trace width for a given target 50 ohm impedance... and the role"
+ }
+}
