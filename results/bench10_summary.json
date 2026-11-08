@@ -1,0 +1,54 @@
+{
+ "S1_mask1_lazyon": {
+  "gen_tps": 17.78,
+  "prefill_tps": 41.84,
+  "finish": [
+   "stop",
+   "length",
+   "stop"
+  ],
+  "cache_uploads": 450,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "Here is a Python function that calculates the microstrip width for a target 50 Ohm impedance using the Hammerstad-Jensen equations.\n\n```python\ndef sol ...[SFARS"
+ },
+ "S2_mask2_lazyon": {
+  "gen_tps": 15.62,
+  "prefill_tps": 39.26,
+  "finish": [
+   "length",
+   "length",
+   "length"
+  ],
+  "cache_uploads": 449,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "# Solving for Microstrip Width with Hammerstad-Jensen Equations\n\n## The Role of the Effective Dielectric Constant\n\nIn a microstrip, the electromagneti ...[SFARS"
+ },
+ "S3_mask1_lazyauto": {
+  "gen_tps": 4.62,
+  "prefill_tps": 47.42,
+  "finish": [
+   "stop",
+   "stop",
+   "stop"
+  ],
+  "cache_uploads": 479,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "# N\n\n### The role of the effective dielectric ...\n\n## a.###\n\nNet:< stream>.\n\n< and a new\n\n#:00\n\nThe model is not the onlysrc<For a large, but the<| >. ...[SFARS"
+ },
+ "S4_mask2_lazyauto": {
+  "gen_tps": 6.6,
+  "prefill_tps": 40.45,
+  "finish": [
+   "stop",
+   "stop",
+   "stop"
+  ],
+  "cache_uploads": 448,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "<1\n<br><'r'.split from 0.0). You're\n()<br \n. 1\n)\n\nLet's question: it is not a good subject to the first step. Now, the\n\n##\n\n<The Python M\n\n<! (del nev ...[SFARS"
+ }
+}

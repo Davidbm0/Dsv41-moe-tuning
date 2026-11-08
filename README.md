@@ -98,15 +98,28 @@ Verdict:
 - Caveat: `finish_reason` alone is not a quality gate — Q stopped at EOS and was still garbage.
   Content inspection is required.
 
-### bench10 (queued)
+### bench10 results + verdict (2×2 mask × lazy, reasoning OFF)
 
-`scripts/llama_server_bench10.py` + `RUN-BENCH10.bat` — clean 2×2 {mask 1, mask 2} × {lazy on, lazy auto},
-all with **server-side reasoning OFF**, decode 1024 tok (full answer incl. code), samples recorded as
-head+tail so loop-vs-complete-answer is visible in the summary:
-- `S1` mask 1 + lazy on (P at 1024 tok — does the answer finish with finish=stop?)
-- `S2` mask 2 + lazy on (same speed as S1 with better quality?)
-- `S3` mask 1 + lazy auto (was Q's garbage from reasoning ON or from mask 1 itself?)
-- `S4` mask 2 + lazy auto (coherent control, reasoning OFF)
+| Config | decode avg | prefill | finish | output quality |
+|---|---|---|---|---|
+| `S1` mask 1 + lazy on | **17.8** (15.0 / 16.9 / **21.4**) | 41.8 | stop, length, **stop** | **full coherent answer**: code block + ε_eff explanation, ends with a complete sentence |
+| `S2` mask 2 + lazy on | 15.6 (13.3 / 16.5 / 17.1) | 39.3 | length ×3 | coherent but truncated mid-code (`return u *`) |
+| `S3` mask 1 + lazy auto | 4.6 | 47.4 | stop ×3 | **garbage** ("# N … Net:< stream>…") |
+| `S4` mask 2 + lazy auto | 6.6 | 40.5 | stop ×3 | **garbage** ("<1 <br><'r'.split from 0.0)…") |
+
+Verdict:
+- **Winning recipe: `--lazy-mode on --no-sched-async-cpu --moe-cache-mask 1 --moe-cache-dyn 32
+  --moe-cache-slots 8 -b 4096 -ub 1024 --reasoning off`** → 17.8 avg / 21.4 warm t/s on a
+  genuinely complete answer (finish=stop at 991 tokens; the tail is a finished explanation
+  sentence, not a loop).
+  Beats Codacus's 18.4 warm on an RTX 3060.
+- **mask 1 > mask 2 with lazy on** (17.8 vs 15.6) — and quality is fine. The bench9 fear about
+  mask 1 was misplaced: mask 1's garbage in Q/S3/S4 comes from **lazy auto**, not from mask 1.
+- **lazy auto + reasoning OFF = garbage at both masks.** bench6 F (lazy auto + reasoning ON) was
+  coherent — so reasoning ON was accidentally *compensating* for a broken lazy-auto path.
+  Suspected fork bug worth reporting upstream.
+- S1 run 2 `finish=length` is the 1024 cap on a longer answer, not degeneracy (runs 1/3 stopped
+  naturally at 827/991).
 
 ### What bench6 proved (old build vs readahead build, same model/GPU)
 
