@@ -53,6 +53,12 @@ cache-hit-rate problem**, not a FLOPS problem. These benches measure which knobs
 - The speed itself is real (server `eval time`, not a client artifact): 1536 tokens in
   67–83 s. The open question is how much of it survives coherent output.
 
+### bench8 (queued)
+
+`scripts/llama_server_bench8.py` + `RUN-BENCH8.bat` — measures the lazy-mode recipe on
+*coherent* decode (512 tokens, normal EOS, `finish_reason` and cache-swap counts recorded):
+`M` = L recipe exact, `N` = +12 slots, `O` = mask 1 instead of 2.
+
 ### What bench6 proved (old build vs readahead build, same model/GPU)
 
 - Prefill: **0.53 → 41 t/s (77x)**. The fix is `-b 4096 -ub 1024` + `GGML_SCHED_READAHEAD=16`
