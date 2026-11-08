@@ -1,0 +1,41 @@
+{
+ "P_thinkoff_lazyon": {
+  "gen_tps": 15.15,
+  "prefill_tps": 42.64,
+  "finish": [
+   "length",
+   "length",
+   "length"
+  ],
+  "cache_uploads": 428,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "# Solving for Microstrip Width (Hammerstad-Jensen)\n\nThe microstrip width solving problem is a **synthesis** problem: given a target impedance \\(Z_0\\), substrate"
+ },
+ "Q_mask1_lazyauto": {
+  "gen_tps": 7.84,
+  "prefill_tps": 43.41,
+  "finish": [
+   "stop",
+   "stop",
+   "stop"
+  ],
+  "cache_uploads": 588,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "?< \u662f\u4e0e\u5176\u4ed6\u610f\u601d\nThe user~~~~The Author has been assigned>\n<r>I is a 1000\n\n```  \n> - The user's if we the in> A long\n"
+ },
+ "R_budget256_lazyon": {
+  "gen_tps": 18.48,
+  "prefill_tps": 43.64,
+  "finish": [
+   "length",
+   "length",
+   "length"
+  ],
+  "cache_uploads": 594,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "We need answer. Need answer. Need respond to user: \"Write a Python function solve_microstrip_width(z_target, h_mm, er, t_oz) that finds the microstrip trace wid"
+ }
+}

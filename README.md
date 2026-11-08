@@ -76,17 +76,32 @@ cache-hit-rate problem**, not a FLOPS problem. These benches measure which knobs
 - Open confound: does lazy-mode *itself* degrade the output, or does degenerate output
   simply enable the speed? bench9 separates the two.
 
-### bench9 (queued)
+### bench9 results + verdict
 
-`scripts/llama_server_bench9.py` + `RUN-BENCH9.bat` — all configs mask 1 + 8 slots, decode 512 tok,
-`finish_reason` recorded:
-- `P` = bench8 O recipe (lazy on) but **server-side reasoning OFF** → does 18–25 t/s survive on
-  genuinely coherent output?
-- `Q` = mask 1 alone, lazy **auto**, reasoning ON → separates the mask lever from the lazy lever.
-- `R` = lazy on + `--reasoning-budget 256` → thinking forced to close, then answer.
+| Config | decode avg | prefill | finish | output quality |
+|---|---|---|---|---|
+| `P` lazy on + mask 1 + **reasoning OFF** | **15.2** (10.5 / 16.2 / 18.7) | 42.6 | length (512 cap) | **coherent markdown**, real HJ formulas |
+| `Q` lazy auto + mask 1 + reasoning ON | 7.8 (6.8 / 8.3 / 8.4) | 43.4 | stop ×3 | **garbage** ("?< 是与其他意思…") |
+| `R` lazy on + mask 1 + budget 256 | 18.5 (12.2 / 20.0 / 23.2) | 43.6 | length | rambling "Need answer. Need…" |
 
-Reading: P ~20 with finish=stop → lazy-mode is a real speed knob; P ~8–10 with finish=stop →
-bench8's speed was an artifact of degeneracy.
+Verdict:
+- **lazy-mode on is a real speed knob, not a degeneracy artifact.** P generated a coherent
+  Hammerstad-Jensen writeup (correct ε_eff discussion, proper LaTeX) at 16–18.7 t/s warm.
+  `finish=length` on P is just the 512-token cap cutting a long answer mid-section
+  ("## Python implementation"), not a loop.
+- **The degeneracy in bench8 came from reasoning ON + lazy on**, not from lazy itself.
+  `--reasoning-budget 256` did NOT force the think block closed (R still rambles) — budget
+  appears ineffective with this template.
+- **mask 1 + lazy auto = garbage output** (Q). Mask 1 with only 8 slots forces the router into
+  8/128 experts per layer; quality collapses. Mask 2 (bench6 F) was coherent. Mask 1 is too
+  aggressive at this cache width.
+- Caveat: `finish_reason` alone is not a quality gate — Q stopped at EOS and was still garbage.
+  Content inspection is required.
+
+### bench10 (queued)
+
+Clean 2×2 to find the best *quality* recipe: {mask 1, mask 2} × {lazy on, lazy auto}, all with
+**reasoning OFF**, decode 1024 tok (long enough for a full answer), quality judged on content.
 
 ### What bench6 proved (old build vs readahead build, same model/GPU)
 
