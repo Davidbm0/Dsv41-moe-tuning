@@ -36,7 +36,7 @@ PROFILE_SRC = os.path.join(HERE, "profile2.csv")   # profil valid din bench2 (ac
 PORT = 8090
 N_PRED = 1024         # bench10: raspuns intreg (writeup + cod) in ctx 4096; finish=stop = EOS real
 REASON_BUDGET = 768
-VRAM_GATE_MAX_MIB = 1200
+VRAM_GATE_MAX_MIB = 1500   # bench10 fix: 1224 MiB = desktop normal (chrome+dwm+wallpaper) -> 1200 era prea strict
 RAM_GATE_MIN_GB = 20.0
 
 SHORT_PROMPT = ("Write a Python function solve_microstrip_width(z_target, h_mm, er, t_oz) that finds the "
