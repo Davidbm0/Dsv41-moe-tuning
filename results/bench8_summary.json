@@ -1,0 +1,41 @@
+{
+ "M_lazy_coherent": {
+  "gen_tps": 18.66,
+  "prefill_tps": 43.07,
+  "finish": [
+   "length",
+   "length",
+   "length"
+  ],
+  "cache_uploads": 561,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "We need answer to user. Need write Python function solve_microstrip_width(z_target, h_mm, er, t_oz) finds microstrip trace width for target 50 Ohm impedance usi"
+ },
+ "N_lazy_slots12": {
+  "gen_tps": 19.59,
+  "prefill_tps": 42.08,
+  "finish": [
+   "length",
+   "length",
+   "length"
+  ],
+  "cache_uploads": 847,
+  "cache": "expert cache: 40 layers x 12 slots, 4442.34 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "We need answer. Need provide Python function solve_microstrip_width(z_target,h_mm,er,t_oz). Finds microstrip trace width for target impedance using Hammerstad-J"
+ },
+ "O_lazy_mask1": {
+  "gen_tps": 22.66,
+  "prefill_tps": 43.07,
+  "finish": [
+   "length",
+   "length",
+   "length"
+  ],
+  "cache_uploads": 582,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "We need answer. Need craft. User asks write Python function solve_microstrip_width(z_target, h_mm, er, t_oz) finds microstrip trace width for target 50 Ohm impe"
+ }
+}

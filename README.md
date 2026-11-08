@@ -53,11 +53,28 @@ cache-hit-rate problem**, not a FLOPS problem. These benches measure which knobs
 - The speed itself is real (server `eval time`, not a client artifact): 1536 tokens in
   67–83 s. The open question is how much of it survives coherent output.
 
-### bench8 (queued)
+### bench8 results (lazy-mode on, coherent-decode attempt)
 
-`scripts/llama_server_bench8.py` + `RUN-BENCH8.bat` — measures the lazy-mode recipe on
-*coherent* decode (512 tokens, normal EOS, `finish_reason` and cache-swap counts recorded):
-`M` = L recipe exact, `N` = +12 slots, `O` = mask 1 instead of 2.
+| Config | decode avg | prefill | finish_reason |
+|---|---|---|---|
+| bench8 `M` (L recipe, mask 2, 8 slots) | **18.7** (15.2 / 19.8 / 21.0) | 43.1 | length ×3 |
+| bench8 `N` (mask 2, 12 slots) | 19.6 (15.4 / 21.1 / 22.3) | 42.1 | length ×3 |
+| bench8 `O` (**mask 1**, 8 slots) | **22.7** (18.8 / 24.0 / 25.2) | 43.1 | length ×3 |
+
+### What bench8 proved
+
+- `--lazy-mode on --no-sched-async-cpu` is the real decode lever: 8–9 → 18–25 t/s on our box.
+- **mask 1 beats mask 2** once lazy-mode is on (22.7 vs 18.7). Forcing the router into cache
+  residency is no longer needed; letting it roam a warm cache is faster.
+- 12 slots ≈ 8 slots (19.6 vs 18.7). More warm experts don't buy much.
+- Warm-up curve is consistent: run1 ~15 → run3 ~21–25 t/s.
+- **But**: all 9 runs ended `finish=length` — the model rambles inside the `<think>` block
+  ("We need answer. Need recall formulas…") and never closes it. The 512 tokens are
+  low-entropy reasoning filler, so the expert router keeps picking the same experts →
+  cache stays hot → speed is the *warm-cache ceiling*, measured on degenerate text.
+  bench6 F (lazy-mode auto) stopped naturally at 249–390 tokens at 7–9 t/s.
+- Open confound: does lazy-mode *itself* degrade the output, or does degenerate output
+  simply enable the speed? bench9 separates the two.
 
 ### What bench6 proved (old build vs readahead build, same model/GPU)
 
