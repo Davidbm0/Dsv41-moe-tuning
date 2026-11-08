@@ -100,8 +100,13 @@ Verdict:
 
 ### bench10 (queued)
 
-Clean 2×2 to find the best *quality* recipe: {mask 1, mask 2} × {lazy on, lazy auto}, all with
-**reasoning OFF**, decode 1024 tok (long enough for a full answer), quality judged on content.
+`scripts/llama_server_bench10.py` + `RUN-BENCH10.bat` — clean 2×2 {mask 1, mask 2} × {lazy on, lazy auto},
+all with **server-side reasoning OFF**, decode 1024 tok (full answer incl. code), samples recorded as
+head+tail so loop-vs-complete-answer is visible in the summary:
+- `S1` mask 1 + lazy on (P at 1024 tok — does the answer finish with finish=stop?)
+- `S2` mask 2 + lazy on (same speed as S1 with better quality?)
+- `S3` mask 1 + lazy auto (was Q's garbage from reasoning ON or from mask 1 itself?)
+- `S4` mask 2 + lazy auto (coherent control, reasoning OFF)
 
 ### What bench6 proved (old build vs readahead build, same model/GPU)
 
