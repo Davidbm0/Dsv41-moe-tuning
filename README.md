@@ -36,6 +36,22 @@ cache-hit-rate problem**, not a FLOPS problem. These benches measure which knobs
 | **bench6 `F` (readahead build)** | mask2, 8 slots, `-b 4096 -ub 1024`, `--layer-major 1` | **8.3** | **41.0** |
 | bench6 `E` (readahead, `-b 256`) | control, same as bench5 A | 7.3 | 3.4 |
 | bench6 `G` (`--layer-major 3`) | 4 ubatches — nothing to group | 6.8 | 38.8 |
+| bench7 `I`/`K` (`--weights-in-ram 60`) | **Linux-only knob** — `load_weights_ram: --weights-in-ram needs Linux` on Windows, no effect | bench7 logs |
+| bench7 `J`/`K` (`-ub 512 --layer-major 3`) | worse prefill than F — lm3 needs many ubatches per batch | 6.8–7.5 | 12.1 |
+| **bench7 `L` (`--lazy-mode on --no-sched-async-cpu`)** | **18.4 / 21.2 / 22.7 t/s** across 3 warm runs (server-measured) — see caveat | 20.8 | 41.6 |
+
+### What bench7 proved
+
+- `--weights-in-ram` is a no-op on Windows (Linux-only). Dead knob.
+- `-ub 512` + `--layer-major 3` *hurts* prefill (41 → 12 t/s). The winning prefill recipe
+  stays `-b 4096 -ub 1024 --layer-major 1`.
+- `--lazy-mode on --no-sched-async-cpu` produced 18–22 t/s decode — the fork's headline
+  number, on our hardware. **Caveat:** all three runs hit the 1536-token cap in a
+  low-entropy repetition loop ("Need X. Need Y. …"), where the router keeps picking the
+  same experts → near-100% cache hit rate → no swaps. Coherent runs (bench6 F) still
+  decode at 8–9 t/s. Warm-up is visible: run1 18.4 → run3 22.7 t/s.
+- The speed itself is real (server `eval time`, not a client artifact): 1536 tokens in
+  67–83 s. The open question is how much of it survives coherent output.
 
 ### What bench6 proved (old build vs readahead build, same model/GPU)
 

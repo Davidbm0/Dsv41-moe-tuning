@@ -1,0 +1,30 @@
+{
+ "I_wir60": {
+  "gen_tps": 6.94,
+  "prefill_tps": 43.1,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "## 1\ne\n\nr stronger to a of the following: The question is\n\nI\n\nC\n\n. no\n\n** and then, find the solution. I'll need to write the answer as a\n\n- A\n\n< everything to "
+ },
+ "J_ub512_lm3": {
+  "gen_tps": 6.82,
+  "prefill_tps": 12.08,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "**"
+ },
+ "K_wir60_ub512_lm3": {
+  "gen_tps": 7.55,
+  "prefill_tps": 12.2,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "\n\n"
+ },
+ "L_recipe_exact": {
+  "gen_tps": 20.78,
+  "prefill_tps": 41.63,
+  "cache": "expert cache: 40 layers x 8 slots, 2961.56 MiB uploaded to CUDA0",
+  "offload": "",
+  "sample": "We need answer. Need craft answer. Need solve function. Need explain role effective dielectric constant. Need likely provide Python implementation. Need underst"
+ }
+}
