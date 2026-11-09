@@ -1,0 +1,120 @@
+{
+ "setup": "DeepSeek-V4.1-IQ2XS_Extreme_pass1",
+ "model": "MODELS/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "think",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 16384,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-04 02:04",
+ "n": 5,
+ "pass1": 0,
+ "pass5": 0,
+ "detail": {
+  "p1_dijkstra_parity": {
+   "attempts": [
+    {
+     "t_s": 116.4,
+     "completion_tokens": 6,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 6,
+     "tg_total": 0.1,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": false,
+     "code": "",
+     "err": "Traceback (most recent call last):\n  File \"TMP/tmpihbm0ky4.py\", line 3, in <module>\n    assert parity_turn_dijkstra(5, edges1, 0, 3) == 27\n           ^^^^^^^^^^^^^^^^^^^^\nNameError: name 'parity_turn_dijkstra' is not defined\n"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": null
+  },
+  "p2_microstrip": {
+   "attempts": [
+    {
+     "t_s": 121.3,
+     "completion_tokens": 6,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 6,
+     "tg_total": 0.0,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": false,
+     "code": "",
+     "err": "Traceback (most recent call last):\n  File \"TMP/tmpqrxm50h8.py\", line 2, in <module>\n    res = solve_microstrip_width(50.0, 0.2, 4.2, 1.0)\n          ^^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'solve_microstrip_width' is not defined\n"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": null
+  },
+  "p3_tx_engine": {
+   "attempts": [
+    {
+     "t_s": 105.5,
+     "completion_tokens": 22,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 22,
+     "tg_total": 0.2,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": false,
+     "code": "",
+     "err": "Traceback (most recent call last):\n  File \"TMP/tmpnmiv4xd5.py\", line 5, in <module>\n    assert run_tx_engine(ops) == ['OK','OK','OK','OK','OK','WAITING','OK','OK','WAITING','DEADLOCK_ABORT','OK','COMMITTED',10,30]\n           ^^^^^^^^^^^^^\nNameError: name 'run_tx_engine' is not defined\n"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": null
+  },
+  "p4_pdn": {
+   "attempts": [
+    {
+     "t_s": 91.0,
+     "completion_tokens": 1,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 1,
+     "tg_total": 0.0,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": false,
+     "code": "",
+     "err": "Traceback (most recent call last):\n  File \"TMP/tmpi4fa2tpi.py\", line 3, in <module>\n    res = analyze_pdn_impedance(caps, 1e5, 1e9, 4001)\n          ^^^^^^^^^^^^^^^^^^^^^\nNameError: name 'analyze_pdn_impedance' is not defined\n"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": null
+  },
+  "p5_ast": {
+   "attempts": [
+    {
+     "t_s": 39.6,
+     "completion_tokens": 8,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 8,
+     "tg_total": 0.2,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": false,
+     "code": "",
+     "err": "Traceback (most recent call last):\n  File \"TMP/tmpnmzlp7cr.py\", line 7, in <module>\n    out1 = optimize_and_execute(ast1, {})\n           ^^^^^^^^^^^^^^^^^^^^\nNameError: name 'optimize_and_execute' is not defined\n"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": null
+  }
+ },
+ "seconds": 474.1,
+ "score": "0/5 pass@1, 0/5 pass@5"
+}

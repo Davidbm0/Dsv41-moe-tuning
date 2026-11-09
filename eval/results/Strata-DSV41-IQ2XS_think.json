@@ -1,0 +1,43 @@
+{
+ "setup": "Strata-DSV41-IQ2XS",
+ "model": "deepseek-v4.1-flash",
+ "mode": "think",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 8192,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-04 13:26",
+ "n": 1,
+ "pass1": 1,
+ "pass5": 1,
+ "detail": {
+  "p5_ast": {
+   "attempts": [
+    {
+     "t_s": 1245.0,
+     "completion_tokens": 7627,
+     "reasoning_chars": 27203,
+     "tok_gandire_est": 7772,
+     "tok_cod_est": 0,
+     "tg_total": 6.1,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "def optimize_and_execute(ast_code: dict, initial_regs: dict) -> dict:\n    regs = dict(initial_regs)\n\n    def resolve(x, known):\n        if isinstance(x, str) and x in known:\n            return known[x]\n        return x\n\n    def is_num(x):\n        return isinstance(x, (int, float)) and not isinstance(x, bool)\n\n    MAX_UNROLL = 1000\n\n    def optimize_body(body, known):\n        optimized = []\n       "
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  }
+ },
+ "seconds": 1245.1,
+ "score": "1/1 pass@1, 1/1 pass@5"
+}
