@@ -1,0 +1,44 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "think",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 16384,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 18:44",
+ "n": 1,
+ "pass1": 0,
+ "pass5": 0,
+ "detail": {
+  "p1_dijkstra_parity": {
+   "attempts": [
+    {
+     "t_s": 818.2,
+     "completion_tokens": 16384,
+     "reasoning_chars": 62909,
+     "tok_gandire_est": 17974,
+     "tok_cod_est": 0,
+     "tg_total": 20.0,
+     "finish": "length",
+     "attempt": 1,
+     "ok": false,
+     "code": "    from right: if j<k, distance at R_{j+1} + 3*(c_{j+1}-c_j)+ w*mult(p).\n    We can add edges:\n      L_{j-1} -> OutE,p cost 3*(c_j-c_{j-1}) + w*mult(p)\n      R_{j+1} -> OutE,p cost 3*(c_{j+1}-c_j)+ w*mult(p)\n    Then OutE,p -> target state (v,p',c_j,1) cost 0.\n  Same: state (u,p,c_j,1) -> target state (v,p',c_j,2) cost w*mult(p). Could add direct edge from state node to target state. But there ma",
+     "err": "  File \"TMP/tmp41emy7kz.py\", line 1\n    from right: if j<k, distance at R_{j+1} + 3*(c_{j+1}-c_j)+ w*mult(p).\nIndentationError: unexpected indent\n"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": null
+  }
+ },
+ "seconds": 818.3,
+ "score": "0/1 pass@1, 0/1 pass@5"
+}

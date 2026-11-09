@@ -1,0 +1,44 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "think",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 16384,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 19:23",
+ "n": 1,
+ "pass1": 0,
+ "pass5": 0,
+ "detail": {
+  "p5_ast": {
+   "attempts": [
+    {
+     "t_s": 826.2,
+     "completion_tokens": 16384,
+     "reasoning_chars": 68479,
+     "tok_gandire_est": 19565,
+     "tok_cod_est": 0,
+     "tg_total": 19.8,
+     "finish": "length",
+     "attempt": 1,
+     "ok": false,
+     "code": "def execute_loop_with_cycle(body, N, env, touched):\n    vars_body = list(all_vars(body))\n    seen = {}\n    steps=0\n    while steps < N:\n        state = tuple(env.get(v,0) for v in vars_body)\n        if state in seen:\n            prev_steps = seen[state]\n            cycle = steps - prev_steps\n            remaining = N - steps\n            if cycle > 0:\n                skip = (remaining // cycle) * c",
+     "err": "Traceback (most recent call last):\n  File \"TMP/tmpm3o8nl07.py\", line 25, in <module>\n    out1 = optimize_and_execute(ast1, {})\n           ^^^^^^^^^^^^^^^^^^^^\nNameError: name 'optimize_and_execute' is not defined\n"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": null
+  }
+ },
+ "seconds": 826.3,
+ "score": "0/1 pass@1, 0/1 pass@5"
+}

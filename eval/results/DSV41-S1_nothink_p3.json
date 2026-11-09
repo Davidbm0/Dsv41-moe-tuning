@@ -1,0 +1,60 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "nothink",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 6144,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 17:34",
+ "n": 1,
+ "pass1": 0,
+ "pass5": 0,
+ "detail": {
+  "p3_tx_engine": {
+   "attempts": [
+    {
+     "t_s": 303.5,
+     "completion_tokens": 6144,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 6144,
+     "tg_total": 20.2,
+     "finish": "length",
+     "attempt": 1,
+     "ok": false,
+     "code": "def process_waiting_queue():\n    while True:\n        progress = False\n        new_queue = deque()\n        for tx_id in waiting_queue:\n            if tx_id not in transactions or transactions[tx_id].status != 'waiting':\n                continue\n            # try to execute pending ops\n            while transactions[tx_id].pending_ops:\n                op = transactions[tx_id].pending_ops[0]\n        ",
+     "err": "  File \"TMP/tmpqt_2p0k1.py\", line 40\n    But this is getting messy. Let's step back.\n                                  ^\nSyntaxError: unterminated string literal (detected at line 40)\n"
+    },
+    {
+     "t_s": 69.9,
+     "completion_tokens": 1577,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 1577,
+     "tg_total": 22.5,
+     "finish": "stop",
+     "attempt": 2,
+     "ok": false,
+     "code": "def run_tx_engine(ops):\n    from collections import defaultdict, deque\n\n    store = {}\n    txs = {}\n    wait_for = defaultdict(set)\n    waiting_queue = deque()\n    results = []\n\n    class Tx:\n        def __init__(self, tx_id):\n            self.tx_id = tx_id\n            self.status = 'active'\n            self.locks = {}\n            self.writes = []\n            self.lock_order = []\n            self.",
+     "err": "  File \"TMP/tmp1l3i0sib.py\", line 59\n    results.append 'OK'\n                   ^^^^\nSyntaxError: invalid syntax\n"
+    },
+    {
+     "error": "HTTP Error 400: Bad Request"
+    }
+   ],
+   "n_attempts": 3,
+   "pass_at": null
+  }
+ },
+ "seconds": 373.8,
+ "score": "0/1 pass@1, 0/1 pass@5"
+}

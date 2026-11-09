@@ -1,0 +1,43 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "nothink",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 6144,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 17:30",
+ "n": 1,
+ "pass1": 1,
+ "pass5": 1,
+ "detail": {
+  "p1_dijkstra_parity": {
+   "attempts": [
+    {
+     "t_s": 39.6,
+     "completion_tokens": 560,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 560,
+     "tg_total": 14.2,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import heapq\n\ndef parity_turn_dijkstra(n, edges, start, dst):\n    adj = [[] for _ in range(n)]\n    for u, v, w, c in edges:\n        adj[u].append((v, w, c))\n    \n    INF = float('inf')\n    # dist[state] where state = (node, step_parity, last_color, consecutive_same_count)\n    # step_parity: 0 = next step is odd (1st, 3rd...), 1 = next step is even (2nd, 4th...)\n    # consecutive_same_count: 1 or 2"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  }
+ },
+ "seconds": 39.6,
+ "score": "1/1 pass@1, 1/1 pass@5"
+}

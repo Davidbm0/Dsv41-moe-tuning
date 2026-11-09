@@ -1,0 +1,69 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "nothink",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 6144,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 17:30",
+ "n": 1,
+ "pass1": 0,
+ "pass5": 1,
+ "detail": {
+  "p2_microstrip": {
+   "attempts": [
+    {
+     "t_s": 107.8,
+     "completion_tokens": 984,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 984,
+     "tg_total": 9.1,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": false,
+     "code": "import math\n\ndef solve_microstrip_width(z_target: float, h_mm: float, er: float, t_oz: float) -> dict:\n    t_mm = t_oz * 0.034798\n\n    def impedance(w):\n        u = w / h_mm\n        if t_mm > 0:\n            th = t_mm / h_mm\n            du1 = (th / math.pi) * math.log(1.0 + (4.0 * math.e) / (th * (1.0 / math.tanh(math.sqrt(6.517 * u)) ** 2))\n            du_r = 0.5 * du1 * (1.0 + 1.0 / math.cosh(mat",
+     "err": "  File \"TMP/tmpk2axqu28.py\", line 10\n    du1 = (th / math.pi) * math.log(1.0 + (4.0 * math.e) / (th * (1.0 / math.tanh(math.sqrt(6.517 * u)) ** 2))\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Perhaps you forgot a comma?\n"
+    },
+    {
+     "t_s": 47.4,
+     "completion_tokens": 984,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 984,
+     "tg_total": 20.7,
+     "finish": "stop",
+     "attempt": 2,
+     "ok": false,
+     "code": "import math\n\ndef solve_microstrip_width(z_target: float, h_mm: float, er: float, t_oz: float) -> dict:\n    t_mm = t_oz * 0.034798\n\n    def impedance(w):\n        u = w / h_mm\n        if t_mm > 0:\n            th = t_mm / h_mm\n            du1 = (th / math.pi) * math.log(1.0 + (4.0 * math.e) / (th * (1.0 / math.tanh(math.sqrt(6.517 * u)) ** 2))\n            du_r = 0.5 * du1 * (1.0 + 1.0 / math.cosh(mat",
+     "err": "  File \"TMP/tmp6ah4oqk_.py\", line 10\n    du1 = (th / math.pi) * math.log(1.0 + (4.0 * math.e) / (th * (1.0 / math.tanh(math.sqrt(6.517 * u)) ** 2))\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax. Perhaps you forgot a comma?\n"
+    },
+    {
+     "t_s": 49.6,
+     "completion_tokens": 1086,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 1086,
+     "tg_total": 21.9,
+     "finish": "stop",
+     "attempt": 3,
+     "ok": true,
+     "code": "import math\n\ndef solve_microstrip_width(z_target: float, h_mm: float, er: float, t_oz: float) -> dict:\n    t_mm = t_oz * 0.034798\n\n    def impedance(w):\n        u = w / h_mm\n        if t_mm > 0:\n            th = t_mm / h_mm\n            du1 = (th / math.pi) * math.log(\n                1.0 + (4.0 * math.e) / (th * (1.0 / math.tanh(math.sqrt(6.517 * u)) ** 2))\n            )\n            du_r = 0.5 * d"
+    }
+   ],
+   "n_attempts": 3,
+   "pass_at": 3
+  }
+ },
+ "seconds": 205.2,
+ "score": "0/1 pass@1, 1/1 pass@5"
+}

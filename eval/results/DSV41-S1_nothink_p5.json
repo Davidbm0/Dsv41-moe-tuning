@@ -1,0 +1,43 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "nothink",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 6144,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 17:41",
+ "n": 1,
+ "pass1": 1,
+ "pass5": 1,
+ "detail": {
+  "p5_ast": {
+   "attempts": [
+    {
+     "t_s": 17.3,
+     "completion_tokens": 250,
+     "reasoning_chars": 0,
+     "tok_gandire_est": 0,
+     "tok_cod_est": 250,
+     "tg_total": 14.5,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "def optimize_and_execute(ast_code: dict, initial_regs: dict) -> dict:\n    regs = dict(initial_regs)\n    def val(x):\n        if isinstance(x, str):\n            return regs.get(x, 0)\n        return x\n    def run(stmts):\n        for s in stmts:\n            op = s[\"op\"]\n            if op == \"SET\":\n                regs[s[\"reg\"]] = val(s[\"val\"])\n            elif op in (\"ADD\", \"SUB\", \"MUL\"):\n            "
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  }
+ },
+ "seconds": 17.3,
+ "score": "1/1 pass@1, 1/1 pass@5"
+}

@@ -1,0 +1,43 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "think",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 16384,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 19:19",
+ "n": 1,
+ "pass1": 1,
+ "pass5": 1,
+ "detail": {
+  "p4_pdn": {
+   "attempts": [
+    {
+     "t_s": 208.7,
+     "completion_tokens": 3553,
+     "reasoning_chars": 10314,
+     "tok_gandire_est": 2947,
+     "tok_cod_est": 606,
+     "tg_total": 17.0,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import math\n\ndef analyze_pdn_impedance(caps: list[tuple[float, float, float]], f_start_hz: float, f_stop_hz: float, num_points: int) -> dict:\n    n = int(num_points)\n    if n <= 1:\n        freqs = [float(f_start_hz)]\n    else:\n        ratio = f_stop_hz / f_start_hz\n        freqs = [f_start_hz * ratio ** (k / (n - 1)) for k in range(n)]\n\n    zs = []\n    for f in freqs:\n        w = 2.0 * math.pi * f"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  }
+ },
+ "seconds": 208.8,
+ "score": "1/1 pass@1, 1/1 pass@5"
+}

@@ -163,6 +163,24 @@ python scripts/llama_server_bench5.py --dry
 3. Set `DSV41_MODEL`, run `--dry` first, then the bench. Close any other GPU user first
    (the scripts refuse to start if the GPU is busy — that gate is intentional).
 
+## Coding eval — unde se opresc aceste viteze (`eval/`)
+
+Același model, aceleași hyperparametri, 5 probleme hard (dijkstra+paritate, microstrip
+Hammerstad, tx-engine cu deadlock, PDN, AST optimizer), scor = teste rulate real, pass@1
+single step:
+
+| Setup | pass@1 | decode | Gândire |
+|---|---|---|---|
+| Build vechi al forkului (chatml, experți pe CPU) | **5/5** | 8.7–11.5 t/s | se închide natural (`finish=stop` ×5) |
+| Build readahead + recipe bench10 (mask1+lazy, think) | **2/5** | 14.5–20 t/s | p1/p3/p5: buclă de gândire 63–68k chars, taie la 16384 (`length`) |
+| Motorul Strata pe același GGUF (cfg_M) | — | 15.1 t/s decode, **728 t/s prefill** | — |
+
+De 2× mai rapid nu înseamnă mai bun: pe 3 din 5 probleme build-ul readahead epuizează
+bugetul de tokeni în thinking și nu mai apucă să scrie cod. Iar viteza maximă a forkului
+(17.8 mediu / 21.4 warm, reasoning OFF) rămâne sub Strata la prefill (41.8 vs 728 t/s —
+17×) și mult sub Strata pe Flash-Next (~70 t/s). `eval/ANALIZA-EVAL.md` are detaliile și
+confundarele declarate.
+
 ## Caveats
 
 - IQ2_XS output quality is poor at these configs; speed numbers are comparable across

@@ -1,0 +1,205 @@
+{
+ "setup": "DSV41-M5",
+ "model": "deepseek-v4.1-flash",
+ "mode": "think",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 16384,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-05 12:11",
+ "n": 10,
+ "pass1": 10,
+ "pass5": 10,
+ "detail": {
+  "p1_dijkstra_parity": {
+   "attempts": [
+    {
+     "t_s": 192.1,
+     "completion_tokens": 2024,
+     "reasoning_chars": 5997,
+     "tok_gandire_est": 1713,
+     "tok_cod_est": 311,
+     "tg_total": 10.5,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import heapq\nfrom typing import Optional\n\ndef parity_turn_dijkstra(n: int, edges: list[tuple[int, int, int, int]], start: int, dst: int) -> int:\n    adj = [[] for _ in range(n)]\n    for u, v, w, c in edges:\n        adj[u].append((v, w, c))\n\n    # State: (node, parity_of_edges_taken, last_color, consecutive_same_color_count)\n    start_state = (start, 0, None, 0)\n    dist = {start_state: 0}\n    heap"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "p2_microstrip": {
+   "attempts": [
+    {
+     "t_s": 635.0,
+     "completion_tokens": 7272,
+     "reasoning_chars": 16108,
+     "tok_gandire_est": 4602,
+     "tok_cod_est": 2670,
+     "tg_total": 11.5,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import math\n\ndef solve_microstrip_width(z_target: float, h_mm: float, er: float, t_oz: float) -> dict:\n    t_mm = t_oz * 0.034798\n\n    def calc(w):\n        u = w / h_mm\n\n        if t_mm > 0.0:\n            th = t_mm / h_mm\n            tanh_val = math.tanh(math.sqrt(6.517 * u))\n            term = (4.0 * math.e) / (th * (1.0 / tanh_val) ** 2)\n            du1 = (th / math.pi) * math.log1p(term)\n\n     "
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "p3_tx_engine": {
+   "attempts": [
+    {
+     "t_s": 1186.0,
+     "completion_tokens": 13471,
+     "reasoning_chars": 50008,
+     "tok_gandire_est": 14288,
+     "tok_cod_est": 0,
+     "tg_total": 11.4,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "def run_tx_engine(ops: list[tuple]) -> list:\n    results = []\n    global_store = {}\n    active = {}  # tx_id -> {\"writes\": dict, \"locks\": list, \"savepoints\": dict}\n    lock_owner = {}  # key -> tx_id\n    wait_for = {}  # tx_id -> set(blocker_tx_ids)\n    waiting = {}  # tx_id -> (key, val, blocker)\n    wait_queue = []  # FIFO list of tx_ids\n\n    def can_reach(start, target):\n        stack = [start]"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "p4_pdn": {
+   "attempts": [
+    {
+     "t_s": 402.4,
+     "completion_tokens": 3514,
+     "reasoning_chars": 10458,
+     "tok_gandire_est": 2988,
+     "tok_cod_est": 526,
+     "tg_total": 8.7,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "def analyze_pdn_impedance(caps: list[tuple[float, float, float]], f_start_hz: float, f_stop_hz: float, num_points: int) -> dict:\n    import math\n\n    if num_points <= 0:\n        raise ValueError(\"num_points must be positive\")\n    if f_start_hz <= 0 or f_stop_hz <= 0:\n        raise ValueError(\"f_start_hz and f_stop_hz must be positive\")\n\n    if num_points == 1:\n        freqs = [f_start_hz]\n    else"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "p5_ast": {
+   "attempts": [
+    {
+     "t_s": 550.2,
+     "completion_tokens": 6152,
+     "reasoning_chars": 24656,
+     "tok_gandire_est": 7045,
+     "tok_cod_est": 0,
+     "tg_total": 11.2,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "def optimize_and_execute(ast_code: dict, initial_regs: dict) -> dict:\n    regs = dict(initial_regs)\n\n    def get_val(x):\n        if isinstance(x, str):\n            if x not in regs:\n                regs[x] = 0\n            return regs[x]\n        return x\n\n    def execute(stmts):\n        for stmt in stmts:\n            op = stmt[\"op\"]\n\n            if op == \"SET\":\n                reg = stmt[\"reg\"]\n   "
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "e1_coupled_mtl": {
+   "attempts": [
+    {
+     "t_s": 283.2,
+     "completion_tokens": 2933,
+     "reasoning_chars": 6580,
+     "tok_gandire_est": 1880,
+     "tok_cod_est": 1053,
+     "tg_total": 10.4,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import math\nimport cmath\n\ndef analyze_coupled_microstrip(L11_nh: float, L12_nh: float, C11_pf: float, C12_pf: float, length_m: float, freq_hz: float, z0_ohms: float) -> dict:\n    L11 = L11_nh * 1e-9\n    L12 = L12_nh * 1e-9\n    C11 = C11_pf * 1e-12\n    C12 = C12_pf * 1e-12\n\n    L_odd = L11 - L12\n    C_odd = C11 - C12\n    L_even = L11 + L12\n    C_even = C11 + C12\n\n    z0_odd = math.sqrt(L_odd / C_od"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "e2_fdm_laplace": {
+   "attempts": [
+    {
+     "t_s": 632.6,
+     "completion_tokens": 7093,
+     "reasoning_chars": 20487,
+     "tok_gandire_est": 5853,
+     "tok_cod_est": 1240,
+     "tg_total": 11.2,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "def solve_2d_microstrip_fdm(nx: int, ny: int, j_sub: int, strip_i_list: list, er_sub: float) -> dict:\n    import math\n\n    strip_set = set(strip_i_list)\n\n    def solve(er: float) -> list:\n        V = [[0.0] * ny for _ in range(nx)]\n\n        for i in strip_i_list:\n            V[i][j_sub] = 1.0\n\n        eps_below = er\n        eps_above = 1.0\n        denom = eps_below + eps_above\n        coeff_below "
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "e3_spice_diode_rc": {
+   "attempts": [
+    {
+     "t_s": 1171.6,
+     "completion_tokens": 12757,
+     "reasoning_chars": 29100,
+     "tok_gandire_est": 8314,
+     "tok_cod_est": 4443,
+     "tg_total": 10.9,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import math\n\ndef simulate_nonlinear_diode_rc(v_in_dc: float, v_in_step: float, r1_ohms: float, r2_ohms: float, c2_farads: float, dt_sec: float) -> dict:\n    Is = 1e-12\n    VT = 0.025\n\n    def safe_exp(x: float) -> float:\n        if x > 700.0:\n            return math.exp(700.0)\n        if x < -700.0:\n            return 0.0\n        return math.exp(x)\n\n    def solve_current(vin: float, r1: float, r2:"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "e4_serdes_eye": {
+   "attempts": [
+    {
+     "t_s": 971.1,
+     "completion_tokens": 9628,
+     "reasoning_chars": 21297,
+     "tok_gandire_est": 6085,
+     "tok_cod_est": 3543,
+     "tg_total": 9.9,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import math\n\ndef analyze_serdes_eye(t_ui_ps: float, num_samples: int, dfe_taps: int) -> dict:\n    T = float(t_ui_ps)\n    N = int(num_samples)\n    K = int(dfe_taps)\n\n    tau1 = T / math.log(2.0)\n    tau2 = T / math.log(4.0)\n    denom = tau1 - tau2\n\n    def step(t: float) -> float:\n        if t <= 0.0:\n            return 0.0\n        return 1.0 - (tau1 * math.exp(-t / tau1) - tau2 * math.exp(-t / tau"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  },
+  "e5_rf_conj_match": {
+   "attempts": [
+    {
+     "t_s": 657.2,
+     "completion_tokens": 7556,
+     "reasoning_chars": 20123,
+     "tok_gandire_est": 5749,
+     "tok_cod_est": 1807,
+     "tg_total": 11.5,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import math\nimport cmath\n\ndef synthesize_rf_conjugate_match(s11: complex, s12: complex, s21: complex, s22: complex, z0: float) -> dict:\n    delta = s11 * s22 - s12 * s21\n    delta_mag = abs(delta)\n    s12s21_abs = abs(s12 * s21)\n\n    k_factor = (1 - abs(s11) ** 2 - abs(s22) ** 2 + abs(delta) ** 2) / (2 * s12s21_abs)\n    mu1_factor = (1 - abs(s11) ** 2) / (abs(s22 - delta * s11.conjugate()) + s12s2"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  }
+ },
+ "seconds": 6681.7,
+ "score": "10/10 pass@1, 10/10 pass@5"
+}

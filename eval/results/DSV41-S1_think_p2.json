@@ -1,0 +1,43 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "think",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 16384,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 18:58",
+ "n": 1,
+ "pass1": 1,
+ "pass5": 1,
+ "detail": {
+  "p2_microstrip": {
+   "attempts": [
+    {
+     "t_s": 418.6,
+     "completion_tokens": 6076,
+     "reasoning_chars": 14091,
+     "tok_gandire_est": 4026,
+     "tok_cod_est": 2050,
+     "tg_total": 14.5,
+     "finish": "stop",
+     "attempt": 1,
+     "ok": true,
+     "code": "import math\n\ndef solve_microstrip_width(z_target: float, h_mm: float, er: float, t_oz: float) -> dict:\n    if h_mm <= 0.0:\n        raise ValueError(\"h_mm must be positive\")\n    if er <= 1.0:\n        raise ValueError(\"er must be greater than 1\")\n\n    t_mm = t_oz * 0.034798\n\n    def calc_eeff(w: float) -> float:\n        u = w / h_mm\n        if t_mm > 0.0:\n            t_h = t_mm / h_mm\n            du"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": 1
+  }
+ },
+ "seconds": 418.7,
+ "score": "1/1 pass@1, 1/1 pass@5"
+}

@@ -1,0 +1,44 @@
+{
+ "setup": "DSV41-S1",
+ "model": "MODELS/dsv41/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ2_XS-00001-of-00006.gguf",
+ "mode": "think",
+ "p3_variant": "ref14",
+ "hyperparams": {
+  "max_tokens": 16384,
+  "think": {
+   "temperature": 0.6,
+   "top_p": 0.95,
+   "min_p": 0.0
+  },
+  "nothink": {
+   "temperature": 0.1
+  }
+ },
+ "date": "2026-11-09 19:05",
+ "n": 1,
+ "pass1": 0,
+ "pass5": 0,
+ "detail": {
+  "p3_tx_engine": {
+   "attempts": [
+    {
+     "t_s": 883.0,
+     "completion_tokens": 16384,
+     "reasoning_chars": 65001,
+     "tok_gandire_est": 18572,
+     "tok_cod_est": 0,
+     "tg_total": 18.6,
+     "finish": "length",
+     "attempt": 1,
+     "ok": false,
+     "code": "def process_waiting_queue():\n    global waiting_queue\n    progress = True\n    while progress:\n        progress = False\n        new_waiting = []\n        for op in waiting_queue:\n            tx_id, key, val = op\n            tx = txs.get(tx_id)\n            if tx is None or tx.status != 'waiting':\n                continue\n            owner = lock_owner.get(key)\n            if owner is None or owner ==",
+     "err": "Traceback (most recent call last):\n  File \"TMP/tmp9bn55v_h.py\", line 29, in <module>\n    assert run_tx_engine(ops) == ['OK','OK','OK','OK','OK','WAITING','OK','OK','WAITING','DEADLOCK_ABORT','OK','COMMITTED',10,30]\n           ^^^^^^^^^^^^^\nNameError: name 'run_tx_engine' is not defined\n"
+    }
+   ],
+   "n_attempts": 1,
+   "pass_at": null
+  }
+ },
+ "seconds": 883.1,
+ "score": "0/1 pass@1, 0/1 pass@5"
+}
